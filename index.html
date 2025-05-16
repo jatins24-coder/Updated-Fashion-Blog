@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Indian Fashion Trends Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+    }
+    header {
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      border-radius: 0 0 40px 40px;
+    }
+    .navbar {
+      background-color: #343a40 !important;
+    }
+    .navbar a {
+      color: white !important;
+      font-weight: 500;
+    }
+    .section {
+      padding: 60px 15px;
+    }
+    .chart-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .card {
+      margin-bottom: 20px;
+      border: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">Fashion India</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#adv">Advantages</a></li>
+        <li class="nav-item"><a class="nav-link" href="#disadv">Disadvantages</a></li>
+        <li class="nav-item"><a class="nav-link" href="#graph">50-Year Graph</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="animate__animated animate__fadeInDown">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Indian Fashion Evolution</h1>
+    <p class="lead">Explore the vibrant transformation of Indian fashion over 50 years with tech, culture, and trends</p>
+  </div>
+</header>
+
+<!-- ADVANTAGES -->
+<section id="adv" class="section bg-light animate__animated animate__fadeInLeft">
+  <div class="container">
+    <h2 class="mb-4 text-center">Advantages</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card p-3">🌍 Global trend integration</div>
+        <div class="card p-3">🎨 More creativity & fusion styles</div>
+        <div class="card p-3">🛍 Boost in e-commerce fashion</div>
+        <div class="card p-3">🧵 Revival of handloom industries</div>
+        <div class="card p-3">📱 Digital influencers setting fashion</div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3">👗 Personalized and custom fashion</div>
+        <div class="card p-3">🚀 Fashion startups & innovation</div>
+        <div class="card p-3">♻️ Eco-conscious & slow fashion</div>
+        <div class="card p-3">📚 More access to fashion education</div>
+        <div class="card p-3">👠 Fusion of tradition & tech</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISADVANTAGES -->
+<section id="disadv" class="section animate__animated animate__fadeInRight">
+  <div class="container">
+    <h2 class="mb-4 text-center">Disadvantages</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card p-3">💔 Cultural identity dilution</div>
+        <div class="card p-3">♻️ Overconsumption, fast fashion issues</div>
+        <div class="card p-3">🌱 Environmental waste</div>
+        <div class="card p-3">💰 Cost pressure on local artisans</div>
+        <div class="card p-3">😰 Pressure to keep up with trends</div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3">🛑 Rise of knockoffs and fakes</div>
+        <div class="card p-3">📉 Decline in traditional wear use</div>
+        <div class="card p-3">📺 Unrealistic influencer standards</div>
+        <div class="card p-3">💸 Commercialization over quality</div>
+        <div class="card p-3">📉 Skills mismatch in fashion jobs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 50-YEAR GRAPH -->
+<section id="graph" class="section bg-white animate__animated animate__fadeInUp">
+  <div class="container text-center">
+    <h2 class="mb-4">Indian Fashion Over 50 Years</h2>
+    <p class="mb-4">Hover over graph points to see fashion trends evolve</p>
+    <div class="chart-container">
+      <canvas id="fashionChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center">
+  <div class="container">
+    <p class="mb-0">&copy; 2025 Indian Fashion Trends | Powered by Web & Design ❤️</p>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  const ctx = document.getElementById('fashionChart').getContext('2d');
+  const fashionChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['1975', '1985', '1995', '2005', '2015', '2025'],
+      datasets: [
+        {
+          label: 'Traditional Wear (%)',
+          data: [90, 85, 70, 50, 35, 20],
+          borderColor: '#4b79a1',
+          fill: false,
+          tension: 0.4
+        },
+        {
+          label: 'Fusion Styles (%)',
+          data: [5, 10, 25, 50, 70, 90],
+          borderColor: '#ff416c',
+          fill: false,
+          tension: 0.4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          mode: 'index',
+          intersect: false
+        }
+      },
+      interaction: {
+        mode: 'nearest',
+        axis: 'x',
+        intersect: false
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Popularity (%)'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'Year'
+          }
+        }
+      }
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
